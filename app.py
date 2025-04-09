@@ -55,7 +55,12 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    line_bot_api.reply_message(event.reply_token, TextSendMessage(msg))
+    if '美國' in msg :
+        message = TextSendMessage(https://tw.sports.yahoo.com/mlb/scoreboard/)
+        line_bot_api.reply_message(event.reply_token, message)
+    elif '美國' and '戰績' in msg :
+        message = TextSendMessage(https://tw.sports.yahoo.com/mlb/standings/)
+        line_bot_api.reply_message(event.reply_token, message)
 
 #
 #    try:
