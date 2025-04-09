@@ -54,22 +54,22 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    if '美國' and '戰績' in msg :
+    if '美國' in msg and '戰績' in msg :
         message = TextSendMessage(text="https://tw.sports.yahoo.com/mlb/standings/")
         line_bot_api.reply_message(event.reply_token, message)
-    elif '美國' and '球員' in msg :
+    elif '美國' in msg and '球員' in msg :
         message = TextSendMessage(text="https://tw.sports.yahoo.com/mlb/teams/")
         line_bot_api.reply_message(event.reply_token, message)
     elif '美國' in msg :
         message = TextSendMessage(text="https://tw.sports.yahoo.com/mlb/scoreboard/")
         line_bot_api.reply_message(event.reply_token, message)
-    elif '日本' and '戰績' in msg :
+    elif '日本' in msg and '戰績' in msg :
         message = TextSendMessage(text="https://www.fengyuncai.com/npb/standings.asp")
         line_bot_api.reply_message(event.reply_token, message)     
     elif '日本' in msg :
         message = TextSendMessage(text="https://www.msn.com/zh-tw/sports/baseball/npb")
         line_bot_api.reply_message(event.reply_token, message)
-    elif '中華' and '球員' in msg :
+    elif '中華' in msg and '球員' in msg :
         message = TextSendMessage(text="https://www.cpbl.com.tw/player")
         line_bot_api.reply_message(event.reply_token, message)
     elif '中華' in msg :
