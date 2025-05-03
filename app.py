@@ -50,6 +50,70 @@ def callback():
         abort(400)
     return 'OK'
 
+def Carousel_mlb():
+    message = TemplateSendMessage(
+        alt_text='首頁',
+        template=CarouselTemplate(
+            columns=[
+                CarouselColumn(
+                    thumbnail_image_url="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/LA_Dodgers.svg/500px-LA_Dodgers.svg.png",
+                    title='洛杉磯道奇隊',
+                    text='球隊官網',
+                    actions=[
+                        URITemplateAction(
+                            label="進入頁面",
+                            uri="https://www.mlb.com/dodgers/"
+                        )
+                    ]
+                ),
+                CarouselColumn(
+                    thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/NewYorkYankees_caplogo.svg/250px-NewYorkYankees_caplogo.svg.png',
+                    title='紐約洋基隊',
+                    text='球隊官網',
+                    actions=[
+                        URITemplateAction(
+                            label="進入頁面",
+                            uri="https://www.mlb.com/yankees/"
+                        )
+                    ]
+                )
+            ]
+        )
+    )
+    return message
+
+def Carousel_japan():
+    message = TemplateSendMessage(
+        alt_text='首頁',
+        template=CarouselTemplate(
+            columns=[
+                CarouselColumn(
+                    thumbnail_image_url="https://upload.wikimedia.org/wikipedia/commons/b/b1/Hokkaido_Nippon-Ham_Fighters_insignia.png",
+                    title='北海道日本火腿鬥士隊',
+                    text='球隊官網',
+                    actions=[
+                        URITemplateAction(
+                            label="進入頁面",
+                            uri="https://www.fighters.co.jp/global/taiwanese/"
+                        )
+                    ]
+                ),
+                CarouselColumn(
+                    thumbnail_image_url='https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Hanshin_tigers_insignia.PNG/500px-Hanshin_tigers_insignia.PNG',
+                    title='阪神虎隊',
+                    text='球隊官網',
+                    actions=[
+                        URITemplateAction(
+                            label="進入頁面",
+                            uri="https://hanshintigers.jp/"
+                        )
+                    ]
+                )
+            ]
+        )
+    )
+    return message
+
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
@@ -61,7 +125,7 @@ def handle_message(event):
         message = TextSendMessage(text="https://tw.sports.yahoo.com/mlb/teams/")
         line_bot_api.reply_message(event.reply_token, message)
     elif '美國' in msg and '球隊' in msg :
-        message = TextSendMessage(text="1")
+        message = Carousel_mlb()
         line_bot_api.reply_message(event.reply_token, message)  
     elif '美國' in msg :
         message = TextSendMessage(text="https://tw.sports.yahoo.com/mlb/scoreboard/")
@@ -70,7 +134,7 @@ def handle_message(event):
         message = TextSendMessage(text="https://www.fengyuncai.com/npb/standings.asp")
         line_bot_api.reply_message(event.reply_token, message)
     elif '日本' in msg and '球隊' in msg :
-        message = TextSendMessage(text="2")
+        message = Carousel_japan()
         line_bot_api.reply_message(event.reply_token, message)  
     elif '日本' in msg :
         message = TextSendMessage(text="https://www.msn.com/zh-tw/sports/baseball/npb")
