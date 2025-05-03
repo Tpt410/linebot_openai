@@ -60,7 +60,7 @@ def handle_message(event):
     elif '美國' in msg and '球員' in msg :
         message = TextSendMessage(text="https://tw.sports.yahoo.com/mlb/teams/")
         line_bot_api.reply_message(event.reply_token, message)
-     elif '美國' in msg and '球隊' in msg :
+    elif '美國' in msg and '球隊' in msg :
         message = TextSendMessage(text="1")
         line_bot_api.reply_message(event.reply_token, message)  
     elif '美國' in msg :
@@ -69,7 +69,7 @@ def handle_message(event):
     elif '日本' in msg and '戰績' in msg :
         message = TextSendMessage(text="https://www.fengyuncai.com/npb/standings.asp")
         line_bot_api.reply_message(event.reply_token, message)
-     elif '日本' in msg and '球隊' in msg :
+    elif '日本' in msg and '球隊' in msg :
         message = TextSendMessage(text="2")
         line_bot_api.reply_message(event.reply_token, message)  
     elif '日本' in msg :
