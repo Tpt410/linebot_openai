@@ -60,12 +60,18 @@ def handle_message(event):
     elif '美國' in msg and '球員' in msg :
         message = TextSendMessage(text="https://tw.sports.yahoo.com/mlb/teams/")
         line_bot_api.reply_message(event.reply_token, message)
+     elif '美國' in msg and '球隊' in msg :
+        message = TextSendMessage(text="")
+        line_bot_api.reply_message(event.reply_token, message)  
     elif '美國' in msg :
         message = TextSendMessage(text="https://tw.sports.yahoo.com/mlb/scoreboard/")
         line_bot_api.reply_message(event.reply_token, message)
     elif '日本' in msg and '戰績' in msg :
         message = TextSendMessage(text="https://www.fengyuncai.com/npb/standings.asp")
-        line_bot_api.reply_message(event.reply_token, message)     
+        line_bot_api.reply_message(event.reply_token, message)
+     elif '日本' in msg and '球隊' in msg :
+        message = TextSendMessage(text="")
+        line_bot_api.reply_message(event.reply_token, message)  
     elif '日本' in msg :
         message = TextSendMessage(text="https://www.msn.com/zh-tw/sports/baseball/npb")
         line_bot_api.reply_message(event.reply_token, message)
@@ -74,7 +80,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, message)
     elif '中華' in msg :
         message = TextSendMessage(text="https://www.cpbl.com.tw/")
-        line_bot_api.reply_message(event.reply_token, message)    
+        line_bot_api.reply_message(event.reply_token, message)  
     else:
          message = TextSendMessage(text=msg)
          line_bot_api.reply_message(event.reply_token, message)
